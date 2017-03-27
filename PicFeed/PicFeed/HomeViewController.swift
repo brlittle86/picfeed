@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.imageView.image = #imageLiteral(resourceName: "Koenigsegg")
     }
     
     func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
