@@ -28,16 +28,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
-    func isSourceTypeAvailable() {
-        
-    }
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Info: \(info)")
+        self.imageView.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+        imagePickerControllerDidCancel(picker)
     }
     
     func doesHaveCamera() -> Bool {
