@@ -21,9 +21,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
+        
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
         self.present(self.imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    func isSourceTypeAvailable() {
         
     }
     
@@ -35,6 +40,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         print("Info: \(info)")
     }
     
+    func doesHaveCamera() -> Bool {
+        return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+    }
+    
     @IBAction func imageTapped(_ sender: Any) {
         print("User tapped image.")
         presentActionSheet()
@@ -44,8 +53,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let actionSheetController = UIAlertController(title: "Source", message: "Please select Source Type", preferredStyle: .actionSheet)
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
-            self.presentImagePickerWith(sourceType: .camera)
+        if doesHaveCamera() == true {
+            let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+                self.presentImagePickerWith(sourceType: .camera)
+            }
+            actionSheetController.addAction(cameraAction)
         }
         
         let photoAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
@@ -54,7 +66,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         
-        actionSheetController.addAction(cameraAction)
+        
         actionSheetController.addAction(photoAction)
         actionSheetController.addAction(cancelAction)
         
