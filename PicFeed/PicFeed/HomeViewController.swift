@@ -13,11 +13,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let imagePicker = UIImagePickerController()
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.imageView.image = #imageLiteral(resourceName: "Koenigsegg")
+        Filters.originalImage = #imageLiteral(resourceName: "Koenigsegg")
+        
+        filterButtonTopConstraint.constant = 8
+        UIView.animate(withDuration: 2.0) {
+            self.view.layoutIfNeeded()
+        }
+        
     }
     
     func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
@@ -35,6 +43,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Info: \(info)")
+        
+        guard let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
+        
+        Filters.originalImage = originalImage
+        
         self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
         if let capturedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
@@ -49,6 +62,51 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func imageTapped(_ sender: Any) {
         print("User tapped image.")
         presentActionSheet()
+    }
+    
+    @IBAction func postButtonPressed(_ sender: Any) {
+        if let image = self.imageView.image {
+            let newPost = Post(image: image)
+            CloudKit.shared.save(post: newPost, completion: { (success) in
+                
+                if success {
+                    print("Saved Post successfully to CloudKit")
+                } else {
+                    print("We did NOT successfully save to CloudKit")
+                }
+            })
+        }
+    }
+    
+    @IBAction func filterButtonPressed(_ sender: Any) {
+        guard let image = self.imageView.image else { return }
+        
+        let alertController = UIAlertController(title: "Filter", message: "Please select a filter.", preferredStyle: .alert)
+        
+        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
+            Filters.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        
+        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
+            Filters.filter(name: .vintage, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        
+        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
+            self.imageView.image = Filters.originalImage
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(blackAndWhiteAction)
+        alertController.addAction(vintageAction)
+        alertController.addAction(resetAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func presentActionSheet(){
