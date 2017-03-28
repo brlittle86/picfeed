@@ -11,6 +11,9 @@ import UIKit
 enum FilterName : String {
     case vintage = "CIPhotoEffectTransfer"
     case blackAndWhite = "CIPhotoEffectMono"
+    case comicEffect = "CIComicEffect"
+    case distorted = "CIBumpDistortion"
+    case lineOverlay = "CILineOverlay"
 }
 
 typealias FilterCompletion = (UIImage?) -> ()

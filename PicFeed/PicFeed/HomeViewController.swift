@@ -56,9 +56,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Filters.originalImage = originalImage
         
         self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
-//        if let capturedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
-//        }
+
         imagePickerControllerDidCancel(picker)
     }
     
@@ -102,6 +100,24 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             })
         }
         
+        let comicEffectAction = UIAlertAction(title: "Comic Effect", style: .default) { (action) in
+            Filters.filter(name: .comicEffect, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        
+        let bumpDistortionAction = UIAlertAction(title: "Bump Distortion", style: .default) { (action) in
+            Filters.filter(name: .distorted, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        
+        let lineOverlayAction = UIAlertAction(title: "Line Overlay", style: .default) { (action) in
+            Filters.filter(name: .lineOverlay, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
+        
         let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
             self.imageView.image = Filters.originalImage
         }
@@ -110,6 +126,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         alertController.addAction(blackAndWhiteAction)
         alertController.addAction(vintageAction)
+        alertController.addAction(comicEffectAction)
+        alertController.addAction(bumpDistortionAction)
+        alertController.addAction(lineOverlayAction)
         alertController.addAction(resetAction)
         alertController.addAction(cancelAction)
         
