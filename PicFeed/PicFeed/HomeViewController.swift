@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
         self.present(self.imagePicker, animated: true, completion: nil)
         
     }
@@ -35,6 +36,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Info: \(info)")
         self.imageView.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
+        if let capturedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
+        }
         imagePickerControllerDidCancel(picker)
     }
     
