@@ -55,6 +55,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let actionSheetController = UIAlertController(title: "Source", message: "Please select Source Type", preferredStyle: .actionSheet)
         
+        actionSheetController.popoverPresentationController?.sourceView = self.view
+        //actionSheetController.popoverPresentationController?.sourceRect = self.view
+        actionSheetController.modalPresentationStyle = .popover
+        
         if doesHaveCamera() == true {
             let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
                 self.presentImagePickerWith(sourceType: .camera)
