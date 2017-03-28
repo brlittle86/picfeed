@@ -80,6 +80,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     print("We did NOT successfully save to CloudKit")
                 }
             })
+            UIImageWriteToSavedPhotosAlbum(image, self, nil, nil)
         }
     }
     
