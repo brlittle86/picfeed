@@ -35,8 +35,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Info: \(info)")
-        self.imageView.image = info["UIImagePickerControllerOriginalImage"] as? UIImage
-        if let capturedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
+        if let capturedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
             UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
         }
         imagePickerControllerDidCancel(picker)
