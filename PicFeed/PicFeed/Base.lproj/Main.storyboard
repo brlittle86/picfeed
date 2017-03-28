@@ -31,7 +31,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUo-eC-kfq">
-                                <rect key="frame" x="46.5" y="45" width="281" height="30"/>
+                                <rect key="frame" x="46.5" y="-146.5" width="281" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="POST">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,11 +58,11 @@
                             <constraint firstItem="ryW-DB-9he" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="6Nu-90-zVv"/>
                             <constraint firstItem="bUo-eC-kfq" firstAttribute="width" secondItem="ryW-DB-9he" secondAttribute="width" id="JsY-0W-44k"/>
                             <constraint firstItem="tSX-CF-bll" firstAttribute="width" secondItem="ryW-DB-9he" secondAttribute="width" id="SLJ-tO-56S"/>
-                            <constraint firstItem="ryW-DB-9he" firstAttribute="top" secondItem="bUo-eC-kfq" secondAttribute="bottom" constant="8" id="eTR-BQ-o8X"/>
                             <constraint firstItem="ryW-DB-9he" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="fZD-jy-wac"/>
                             <constraint firstItem="ryW-DB-9he" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="heg-vA-5Ef"/>
                             <constraint firstItem="bUo-eC-kfq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nm8-f4-Nnb"/>
                             <constraint firstItem="ryW-DB-9he" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pCW-l6-QeN"/>
+                            <constraint firstItem="ryW-DB-9he" firstAttribute="top" secondItem="bUo-eC-kfq" secondAttribute="bottom" constant="200" id="pKE-3i-FPo"/>
                             <constraint firstItem="tSX-CF-bll" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tIg-CX-rQE"/>
                         </constraints>
                         <connections>
@@ -73,6 +73,7 @@
                     <connections>
                         <outlet property="filterButtonTopConstraint" destination="2kr-af-hGU" id="ytd-UP-KzC"/>
                         <outlet property="imageView" destination="ryW-DB-9he" id="Ps6-h4-OL6"/>
+                        <outlet property="postButtonBottomConstraint" destination="pKE-3i-FPo" id="ZIm-7j-4PP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

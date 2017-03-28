@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var postButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.imageView.image = #imageLiteral(resourceName: "Koenigsegg")
         Filters.originalImage = #imageLiteral(resourceName: "Koenigsegg")
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        postButtonBottomConstraint.constant = 8
         filterButtonTopConstraint.constant = 8
-        UIView.animate(withDuration: 2.0) {
+        UIView.animate(withDuration: 1.0) {
             self.view.layoutIfNeeded()
         }
         
@@ -49,9 +56,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         Filters.originalImage = originalImage
         
         self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
-        if let capturedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
-        }
+//        if let capturedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+//            UIImageWriteToSavedPhotosAlbum(capturedImage, self, nil, nil)
+//        }
         imagePickerControllerDidCancel(picker)
     }
     
