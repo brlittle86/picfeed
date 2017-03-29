@@ -71,6 +71,7 @@ class CloudKit {
                         }
                     }
                 }
+                completion(posts)
             }
         }
     }
