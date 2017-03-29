@@ -71,7 +71,9 @@ class CloudKit {
                         }
                     }
                 }
-                completion(posts)
+                OperationQueue.main.addOperation {
+                    completion(posts)
+                }
             }
         }
     }
