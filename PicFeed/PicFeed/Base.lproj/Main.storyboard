@@ -117,22 +117,25 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J3m-JP-ims">
                                                     <rect key="frame" x="0.0" y="0.0" width="111" height="111"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVP-DX-M5T">
+                                                <label userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVP-DX-M5T">
                                                     <rect key="frame" x="34" y="90" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="CVP-DX-M5T" firstAttribute="centerX" secondItem="P1s-SN-LAx" secondAttribute="centerX" id="01H-ce-XiS"/>
+                                            <constraint firstAttribute="bottom" secondItem="CVP-DX-M5T" secondAttribute="bottom" id="5Gl-0g-qeh"/>
                                             <constraint firstItem="J3m-JP-ims" firstAttribute="leading" secondItem="P1s-SN-LAx" secondAttribute="leading" id="LD6-pK-2jk"/>
                                             <constraint firstAttribute="bottom" secondItem="J3m-JP-ims" secondAttribute="bottom" id="lK2-tV-jcN"/>
                                             <constraint firstItem="J3m-JP-ims" firstAttribute="top" secondItem="P1s-SN-LAx" secondAttribute="top" id="lXR-gr-Jfz"/>
                                             <constraint firstAttribute="trailing" secondItem="J3m-JP-ims" secondAttribute="trailing" id="svf-3N-EHh"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="dateLabel" destination="CVP-DX-M5T" id="Als-J9-Y0K"/>
                                             <outlet property="imageView" destination="J3m-JP-ims" id="1Pb-uI-tgG"/>
                                         </connections>
                                     </collectionViewCell>

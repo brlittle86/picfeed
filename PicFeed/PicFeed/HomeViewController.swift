@@ -8,6 +8,8 @@
 
 import UIKit
 
+let buttonAnimationDuration = 1.0
+
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let imagePicker = UIImagePickerController()
@@ -29,7 +31,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         postButtonBottomConstraint.constant = 8
         filterButtonTopConstraint.constant = 8
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: buttonAnimationDuration) {
             self.view.layoutIfNeeded()
         }
         
