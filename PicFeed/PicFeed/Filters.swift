@@ -31,7 +31,7 @@ class Filters {
     }
     
     //store original image user picks
-    static var originalImage = UIImage()
+    static var originalImage : UIImage?
     
     //GPU Context lines, NSNull object that represents nil
     
