@@ -10,6 +10,7 @@ import UIKit
 import Social
 
 let buttonAnimationDuration = 1.0
+let heightConstant : CGFloat = 130
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -111,9 +112,13 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     @IBAction func filterButtonPressed(_ sender: Any) {
-        guard let image = self.imageView.image else { return }
+        guard self.imageView.image != nil else { return }
+        if (self.collectionViewHeightConstraint.constant < heightConstant) {
+            self.collectionViewHeightConstraint.constant = heightConstant
+        } else {
+            self.collectionViewHeightConstraint.constant = 0
+        }
         
-        self.collectionViewHeightConstraint.constant = 130
         
         UIView.animate(withDuration: 0.5) { 
             self.view.layoutIfNeeded()
@@ -222,6 +227,8 @@ extension HomeViewController : UICollectionViewDataSource {
         Filters.filter(name: filterName, image: resizedImage) { (filteredImage) in
             filterCell.imageView.image = filteredImage
         }
+        
+        filterCell.filterNameLabel.text = filterName.rawValue
         
         return filterCell
     }

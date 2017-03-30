@@ -69,7 +69,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="J07-Xw-0HF" customClass="FilterCell" customModule="PicFeed" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="21.5" width="88" height="87"/>
+                                        <rect key="frame" x="0.0" y="31.5" width="88" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
@@ -78,15 +78,25 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i8i-x6-RGN">
                                                     <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="KzZ-O0-ukS">
+                                                    <rect key="frame" x="29" y="72.5" width="31" height="14.5"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="KzZ-O0-ukS" secondAttribute="bottom" id="4sE-XL-Eff"/>
                                             <constraint firstItem="i8i-x6-RGN" firstAttribute="top" secondItem="J07-Xw-0HF" secondAttribute="top" id="Ijk-ZT-1lY"/>
                                             <constraint firstAttribute="trailing" secondItem="i8i-x6-RGN" secondAttribute="trailing" id="ZpR-j6-tOD"/>
+                                            <constraint firstItem="KzZ-O0-ukS" firstAttribute="centerX" secondItem="J07-Xw-0HF" secondAttribute="centerX" id="dHp-yF-UKw"/>
                                             <constraint firstAttribute="bottom" secondItem="i8i-x6-RGN" secondAttribute="bottom" id="ds6-S0-BpO"/>
                                             <constraint firstItem="i8i-x6-RGN" firstAttribute="leading" secondItem="J07-Xw-0HF" secondAttribute="leading" id="wg2-MO-uum"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="filterNameLabel" destination="KzZ-O0-ukS" id="qUH-S2-UbD"/>
                                             <outlet property="imageView" destination="i8i-x6-RGN" id="ggw-UQ-qLz"/>
                                         </connections>
                                     </collectionViewCell>
@@ -112,9 +122,6 @@
                             <constraint firstItem="ryW-DB-9he" firstAttribute="top" secondItem="bUo-eC-kfq" secondAttribute="bottom" constant="200" id="pKE-3i-FPo"/>
                             <constraint firstItem="tSX-CF-bll" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tIg-CX-rQE"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="9Dm-QE-sJi" appends="YES" id="jdf-Lq-Pqa"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" id="Ctn-9K-ei9"/>
                     <connections>
