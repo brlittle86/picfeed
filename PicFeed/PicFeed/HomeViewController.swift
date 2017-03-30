@@ -8,6 +8,8 @@
 
 import UIKit
 
+let buttonAnimationDuration = 1.0
+
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let imagePicker = UIImagePickerController()
@@ -25,11 +27,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
         postButtonBottomConstraint.constant = 8
         filterButtonTopConstraint.constant = 8
-        UIView.animate(withDuration: 1.0) {
+        UIView.animate(withDuration: buttonAnimationDuration) {
             self.view.layoutIfNeeded()
         }
         
@@ -84,39 +86,37 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    
+    
     @IBAction func filterButtonPressed(_ sender: Any) {
         guard let image = self.imageView.image else { return }
+        
+        func applyFilter(_ name: FilterName) {
+            Filters.filter(name: name, image: image, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
         
         let alertController = UIAlertController(title: "Filter", message: "Please select a filter.", preferredStyle: .alert)
         
         let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-            Filters.filter(name: .blackAndWhite, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+            applyFilter(.blackAndWhite)
         }
         
         let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-            Filters.filter(name: .vintage, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+            applyFilter(.vintage)
         }
         
         let comicEffectAction = UIAlertAction(title: "Comic Effect", style: .default) { (action) in
-            Filters.filter(name: .comicEffect, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+            applyFilter(.comicEffect)
         }
         
         let bumpDistortionAction = UIAlertAction(title: "Bump Distortion", style: .default) { (action) in
-            Filters.filter(name: .distorted, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+            applyFilter(.distorted)
         }
         
         let lineOverlayAction = UIAlertAction(title: "Line Overlay", style: .default) { (action) in
-            Filters.filter(name: .lineOverlay, image: image, completion: { (filteredImage) in
-                self.imageView.image = filteredImage
-            })
+            applyFilter(.lineOverlay)
         }
         
         let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in

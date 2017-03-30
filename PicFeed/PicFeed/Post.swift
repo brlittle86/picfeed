@@ -11,9 +11,11 @@ import CloudKit
 
 class Post{
     let image : UIImage
+    let date : Date
     
-    init(image : UIImage) {
+    init(image : UIImage, date: Date = Date()) {
         self.image = image
+        self.date = date
     }
 }
 
@@ -34,6 +36,7 @@ extension Post {
             
             let record = CKRecord(recordType: "Post")
             record.setValue(asset, forKey: "image")
+            record.setValue(post.date, forKey: "date")
             
             return record
         } catch  {

@@ -30,3 +30,11 @@ extension UIImage {
         return documentsDirectory.appendingPathComponent("image")
     }
 }
+
+extension UIResponder {
+    
+    static var identifier : String {
+        return String(describing: self)
+    }
+    
+}
