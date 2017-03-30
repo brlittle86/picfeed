@@ -12,7 +12,7 @@ import Social
 let buttonAnimationDuration = 1.0
 let heightConstant : CGFloat = 130
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UINavigationControllerDelegate {
     
     let filterNames = [FilterName.blackAndWhite, FilterName.comicEffect, FilterName.distorted, FilterName.lineOverlay, FilterName.vintage]
     
@@ -65,24 +65,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePicker.allowsEditing = true
         self.present(self.imagePicker, animated: true, completion: nil)
         
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("Info: \(info)")
-        
-        guard let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
-        
-        Filters.originalImage = originalImage
-        
-        self.collectionView.reloadData()
-        
-        self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
-
-        imagePickerControllerDidCancel(picker)
     }
     
     func doesHaveCamera() -> Bool {
@@ -244,5 +226,26 @@ extension HomeViewController : GalleryViewControllerDelegate {
         self.imageView.image = image
         
         self.tabBarController?.selectedIndex = 0
+    }
+}
+
+//MARK: UIImagePickerController Delegate
+extension HomeViewController :  UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("Info: \(info)")
+        
+        guard let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage else { return }
+        
+        Filters.originalImage = originalImage
+        
+        self.collectionView.reloadData()
+        
+        self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
+        
+        imagePickerControllerDidCancel(picker)
     }
 }
