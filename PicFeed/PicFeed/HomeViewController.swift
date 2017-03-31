@@ -56,15 +56,6 @@ class HomeViewController: UIViewController {
         
     }
     
-    func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
-        
-        self.imagePicker.delegate = self
-        self.imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = true
-        self.present(self.imagePicker, animated: true, completion: nil)
-        
-    }
-    
     func doesHaveCamera() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
     }
@@ -253,5 +244,14 @@ extension HomeViewController :  UIImagePickerControllerDelegate, UINavigationCon
         self.imageView.image = info["UIImagePickerControllerEditedImage"] as? UIImage
         
         imagePickerControllerDidCancel(picker)
+    }
+    
+    func presentImagePickerWith(sourceType: UIImagePickerControllerSourceType){
+        
+        self.imagePicker.delegate = self
+        self.imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        self.present(self.imagePicker, animated: true, completion: nil)
+        
     }
 }
