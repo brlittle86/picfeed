@@ -12,7 +12,7 @@ import Social
 let buttonAnimationDuration = 1.0
 let heightConstant : CGFloat = 130
 
-class HomeViewController: UIViewController, UINavigationControllerDelegate {
+class HomeViewController: UIViewController {
     
     let filterNames = [FilterName.blackAndWhite, FilterName.comicEffect, FilterName.distorted, FilterName.lineOverlay, FilterName.vintage]
     
@@ -22,9 +22,7 @@ class HomeViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var filterButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var postButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -238,7 +236,7 @@ extension HomeViewController : GalleryViewControllerDelegate {
 }
 
 //MARK: UIImagePickerController Delegate
-extension HomeViewController :  UIImagePickerControllerDelegate {
+extension HomeViewController :  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.dismiss(animated: true, completion: nil)
     }
