@@ -94,50 +94,7 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 0.5) { 
             self.view.layoutIfNeeded()
         }
-        
-//        func applyFilter(_ name: FilterName) {
-//            Filters.filter(name: name, image: image, completion: { (filteredImage) in
-//                self.imageView.image = filteredImage
-//            })
-//        }
-//        
-//        let alertController = UIAlertController(title: "Filter", message: "Please select a filter.", preferredStyle: .alert)
-//        
-//        let blackAndWhiteAction = UIAlertAction(title: "Black & White", style: .default) { (action) in
-//            applyFilter(.blackAndWhite)
-//        }
-//        
-//        let vintageAction = UIAlertAction(title: "Vintage", style: .default) { (action) in
-//            applyFilter(.vintage)
-//        }
-//        
-//        let comicEffectAction = UIAlertAction(title: "Comic Effect", style: .default) { (action) in
-//            applyFilter(.comicEffect)
-//        }
-//        
-//        let bumpDistortionAction = UIAlertAction(title: "Bump Distortion", style: .default) { (action) in
-//            applyFilter(.distorted)
-//        }
-//        
-//        let lineOverlayAction = UIAlertAction(title: "Line Overlay", style: .default) { (action) in
-//            applyFilter(.lineOverlay)
-//        }
-//        
-//        let resetAction = UIAlertAction(title: "Reset Image", style: .destructive) { (action) in
-//            self.imageView.image = Filters.originalImage
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        
-//        alertController.addAction(blackAndWhiteAction)
-//        alertController.addAction(vintageAction)
-//        alertController.addAction(comicEffectAction)
-//        alertController.addAction(bumpDistortionAction)
-//        alertController.addAction(lineOverlayAction)
-//        alertController.addAction(resetAction)
-//        alertController.addAction(cancelAction)
-//        
-//        self.present(alertController, animated: true, completion: nil)
+
     }
     
     
@@ -158,7 +115,6 @@ class HomeViewController: UIViewController {
         let actionSheetController = UIAlertController(title: "Source", message: "Please select Source Type", preferredStyle: .actionSheet)
         
         actionSheetController.popoverPresentationController?.sourceView = self.view
-        //actionSheetController.popoverPresentationController?.sourceRect = self.view
         actionSheetController.modalPresentationStyle = .popover
         
         if doesHaveCamera() == true {
@@ -255,3 +211,5 @@ extension HomeViewController :  UIImagePickerControllerDelegate, UINavigationCon
         
     }
 }
+
+
